@@ -12,15 +12,16 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  timeout:10000,
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
+  //forbidOnly:true,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: 2,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -33,6 +34,10 @@ export default defineConfig({
     browserName:"chromium",
     headless:false,
     screenshot:'on'
+    // httpCredentials:{
+    //   username:'admin',
+    //   password:'admin'
+    // }
   },
 
   /* Configure projects for major browsers */
