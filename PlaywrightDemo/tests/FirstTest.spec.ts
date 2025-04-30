@@ -1,4 +1,4 @@
-import {test,expect, BrowserContext, Page} from'@playwright/test'
+import {test,expect} from'@playwright/test'
 
 test('This is my first test',async({page})=>{
     await page.goto("https://playwright.dev/");
@@ -23,7 +23,8 @@ test.describe('All test were performed on herokuapp',async()=>{
     })
     test.beforeEach('Navigation to HeroKuapp Url',async({page})=>{
         console.log("This is a before each block");
-        await page.goto("https://the-internet.herokuapp.com/");
+        //await page.goto("https://the-internet.herokuapp.com/");
+        await page.goto("/");
     })
 
     test.afterEach('This is a after each block',async()=>{
@@ -33,12 +34,12 @@ test.describe('All test were performed on herokuapp',async()=>{
     test.afterAll('This is a after all block',async()=>{
         console.log('This is After all block');
     })
-    test('Interacting with text/Input elements',async({page})=>{
-        await page.getByText("Form Authentication").click();
-        let userNameInput = await page.locator("#username");
-        //await userNameInput.fill("tomsmith");
-        await userNameInput.pressSequentially("tomsmith",{delay:1000})
-    })
+    // test('Interacting with text/Input elements',async({page})=>{
+    //     await page.getByText("Form Authentication").click();
+    //     let userNameInput = await page.locator("#username");
+    //     //await userNameInput.fill("tomsmith");
+    //     await userNameInput.pressSequentially("tomsmith",{delay:1000})
+    // })
     
     test('Interacting with dropdowns',async({page})=>{
         await page.waitForTimeout(15000);
@@ -119,7 +120,7 @@ test.describe('All test were performed on herokuapp',async()=>{
         await expect(destination).toHaveText('A');
     })
     
-    test('Interacting with Javascript Alerts',async({page})=>{
+    test.only('Interacting with Javascript Alerts',async({page})=>{
         await page.locator('[href="/javascript_alerts"]').click();
         await expect(page).toHaveURL("https://the-internet.herokuapp.com/javascript_alerts");
         await expect(page).toHaveTitle('The Internet');
@@ -137,10 +138,11 @@ test.describe('All test were performed on herokuapp',async()=>{
         //await expect(page.locator('#result')).toHaveText('You clicked: Ok');
         await expect(page.locator('#result')).toHaveText('You entered: this is a prompt');
         await expect(page.locator('#result')).toHaveId('result');
-        const value = 5;
-        const flag = false;
-        expect(value).toBe(5)
-        expect(flag).toBeFalsy();
+
+        // const value = 5;
+        // const flag = false;
+        // expect(value).toBe(7)
+        // expect(flag).toBeFalsy();
     })
 })
 

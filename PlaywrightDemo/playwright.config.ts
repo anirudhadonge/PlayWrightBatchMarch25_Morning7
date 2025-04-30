@@ -13,31 +13,44 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   timeout:10000,
+  expect:{
+    timeout:5000
+  },
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   //forbidOnly:true,
   /* Retry on CI only */
-  retries: 2,
+  retries: 0,
   /* Opt out of parallel tests on CI. */
   workers: 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html'],['junit',{outputFile:"./output/junit.xml"}],['json',{outputFile:"./output/result.json"}],["allure-playwright"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'https://the-internet.herokuapp.com/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    browserName:"chromium",
+    trace: 'on',
+    browserName:'chromium',
+    channel:"chrome",
     headless:false,
-    screenshot:'on'
+    screenshot:'on',
+    launchOptions:{
+      args:['-start-maximized']
+    },
+    viewport:null
     // httpCredentials:{
     //   username:'admin',
     //   password:'admin'
     // }
+    // video:{
+    //   mode: 'on',
+    //   size: { width: 1920, height: 1080 }
+    // }
+    
   },
 
   /* Configure projects for major browsers */

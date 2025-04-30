@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test":"npx playwright test"
+    "test": "npx playwright test"
   },
   "keywords": [],
   "author": "",
@@ -11,6 +11,10 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.51.1",
-    "@types/node": "^22.14.1"
+    "@types/node": "^22.14.1",
+    "allure-playwright": "^3.2.1"
+  },
+  "dependencies": {
+    "playwrightdemo": "file:"
   }
 }

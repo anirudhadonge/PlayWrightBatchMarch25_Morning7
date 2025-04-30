@@ -34,3 +34,11 @@
  * parent to child  : <locator of Parent> <Locator of child>
  * moving between siblings +
  */
+
+/*
+BrowserName
+Browser
+Browser Context
+Page
+APIRequest
+*/
