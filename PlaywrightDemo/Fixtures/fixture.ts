@@ -9,7 +9,7 @@ import { SecurePage } from '../PageModel/SecurePage'
 export const test= base.extend<{homePage:HomePage,loginPage:LoginPage,securePage:SecurePage}>({
     homePage:async({page},use)=>{
     const homePage = new HomePage(page);
-    homePage.goto('https://the-internet.herokuapp.com/');
+    homePage.goto(process.env.URL);
     use(homePage);
 },
 loginPage:async({page},use)=>{

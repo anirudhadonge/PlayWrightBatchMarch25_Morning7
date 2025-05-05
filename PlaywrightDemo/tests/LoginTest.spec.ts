@@ -1,5 +1,5 @@
 import {test,expect} from './../Fixtures/fixture.ts'
-
+import testData from './../TestData/LoginCredentials.json'
 
 // test('This is a login Test',async({page})=>{
 //     const homePage:HomePage = new HomePage(page);
@@ -18,8 +18,8 @@ import {test,expect} from './../Fixtures/fixture.ts'
 test('This is example of custom fixture',async({homePage,loginPage,securePage})=>{
         await homePage.clickOnFormAuthencation();
         
-        await loginPage.inputUserName('tomsmith');
-        await loginPage.inputPassword('SuperSecretPassword!');
+        await loginPage.inputUserName(testData.username);
+        await loginPage.inputPassword(testData.password);
         await loginPage.clickOnLoginIn();
 
         await securePage.validateLoginIsSuccessfull();    
